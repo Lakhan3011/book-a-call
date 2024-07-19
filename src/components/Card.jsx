@@ -45,7 +45,7 @@ const students = [
   },
 ];
 
-export default function BioCard() {
+export default function BioCard({ students, index }) {
   return (
     <section className="py-12 bg-black sm:py-16 lg:py-20">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
@@ -68,17 +68,36 @@ export default function BioCard() {
             >
               <CardContent
                 sx={{ alignItems: "center", textAlign: "center" }}
-                key={student.id}
+                key={index}
               >
                 <Avatar
-                  src={student.imageSrc}
+                  src={student["imageurl"]}
                   sx={{ "--Avatar-size": "4rem" }}
                 />
 
-                <Typography level="title-lg">{student.name}</Typography>
-                <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
-                  {student.desc}
+                <Typography level="title-lg">
+                  {student["student_name"]}
                 </Typography>
+                <Typography level="body-sm" sx={{ maxWidth: "26ch" }}>
+                  {student["university_name"]}
+                </Typography>
+                <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
+                  {"Language: "}
+                  {student["spoken_language"]}
+                </Typography>
+                <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
+                  {" "}
+                  {student["subject"]}
+                </Typography>
+                <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
+                  {" "}
+                  {student["country"]}
+                </Typography>
+                <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
+                  {"Timezone : "}
+                  {student["timezone"]}
+                </Typography>
+
                 <Box
                   sx={{
                     display: "flex",
@@ -97,7 +116,7 @@ export default function BioCard() {
                   >
                     <Button
                       component="a"
-                      href={student.meetLink}
+                      href={student["meetingLink"]}
                       target="_blank"
                     >
                       Book a Call
